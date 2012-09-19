@@ -1,0 +1,41 @@
+<!--[if	IE]>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML	4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<![endif]-->
+
+<!--[if	!IE]> -->
+<!DOCTYPE html PUBLIC "-//WAPFORUM//DTD	XHTML Mobile 1.0//EN" "http://www.wapforum.org/DTD/xhtml-mobile11.dtd" >
+<!--><![endif]-->
+
+<html>
+<head>
+<meta http-equiv="Content-Type"	content="text/html;	charset=utf-8"/>
+<meta name="viewport" content="initial-scale=1.0; maximum-scale=1.0; user-scalable=0; target-densitydpi=device-dpi"/>
+<script	type="text/javascript" src="bx/blux-bxg-1.0.0.js"></script>
+<script	type="text/javascript" src="bx/bxg-core-1.0.0.js"></script>
+<script	type="text/javascript" src="main.js"></script>
+<style>
+.bxCWnd_window
+{
+	border:solid 1px #cccccc;
+	background-color:#aaaaaa;
+}
+</style>
+<title>BXG Sample Game - Dragon</title>
+</head>
+<body style="background-color:#000000" onload="bxg.load({debug:true});">
+<div style="position:absolute;left:10px;top:10px;width:320px;height:40px;z-index:1;">
+<select id="type" onchange="window.location=window.location.pathname+'?'+this.value" style="font-size:18px">
+	<option value="">Select Scroll Type(Objects)</options>
+	<option value="type=4&OB=100">4Way Scroll(100+)</options>
+	<option value="type=4&OB=300">4Way Scroll(300+)</options>
+	<option value="type=4&OB=500">4Way Scroll(500+)</options>
+	<option value="type=4B&OB=100">4Way Buffered Scroll(100+)</options>
+	<option value="type=4B&OB=300">4Way Buffered Scroll(300+)</options>
+	<option value="type=4B&OB=500">4Way Buffered Scroll(500+)</options>
+	<option value="type=2Bh&OB=100">2Way Buffered Horizontal Scroll(100+)</options>
+	<option value="type=2Bv&OB=100">2Way Buffered Vertical Scroll(100+)</options>
+</select>
+</div>
+</body>
+</html>
+
