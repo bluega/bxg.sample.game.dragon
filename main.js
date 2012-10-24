@@ -2,7 +2,7 @@
 // Sample - Scroll
 /*
 	Objectives:
-		Using CObject and CImageObject
+		Using CObject and CImage
 		Controlling CScrollControl, CBufferedScrollControl, C1WayBufferedScrollControl, C2WayBufferedScrollControl
 		Using CTouchArrowKeyDevice
 		Using CMiniMap
@@ -72,7 +72,7 @@ IEnemyManger = {
 		//  - Free bullet, and
 		//  - Distance to bxg.player is over 200px and probability of 30%
 		if (tickId > obj.data.startFireTick && obj.data._dist > 200 && Math.random() > 0.7){
-			if (obj.data._bullet = bxg.g.poolBullet.getFree()){
+			if (obj.data._bullet = bxg.g.poolBullet.searchFree()){
 				obj.data._bullet.data.launcher = obj;
 				obj.data._bullet.activate();
 			}
@@ -151,16 +151,16 @@ IScrollManager = {
 			bxg.player.data.dx = -bxg.player.data.speed; //W(L)
 			bxg.player.data.spriteState = 'left';
 		}
-		else if (evtMap.keyLeft && evtMap.keyRight.fired){
+		else if (evtMap.keyRight && evtMap.keyRight.fired){
 			bxg.player.data.dx = bxg.player.data.speed; //E(R)
 			bxg.player.data.spriteState = 'right';
 		}
 		
-		if (evtMap.keyLeft && evtMap.keyUp.fired){
+		if (evtMap.keyUp && evtMap.keyUp.fired){
 			bxg.player.data.dy = -bxg.player.data.speed; //N(U)
 			bxg.player.data.spriteState = 'up';
 		}
-		else if (evtMap.keyLeft && evtMap.keyDown.fired){
+		else if (evtMap.keyDown && evtMap.keyDown.fired){
 			bxg.player.data.dy = bxg.player.data.speed; //S(D)
 			bxg.player.data.spriteState = 'down';
 		}
@@ -203,8 +203,6 @@ IScrollManager = {
 		if (control.data._scroll.x || control.data._scroll.y){
 			control.scroll(control.data._scroll.x, control.data._scroll.y);
 
-			bx.Log.log(control.data._scroll.x+','+control.data._scroll.y);
-			bx.Log.log(control.scrollPos.x+','+control.scrollPos.y);
 			control.data._scroll.x = 0;
 			control.data._scroll.y = 0;
 		}
@@ -387,11 +385,11 @@ function onReady(/*Number*/loaded, /*Number*/failed)
 	bxg.g.poolBullet.addToControl(bxg.g.control1);
 
 	// Create and add background pattern and images (crack and bush image)
-	bxg.g.control1.add(new bxg.CImageObject('background', {baseLayer:true, zIndex:0, pattern:true})).move(0, 0);
-	bxg.g.control1.add(new bxg.CImageObject('crack', {baseLayer:true, zIndex:1})).move(50, 50);
+	bxg.g.control1.add(new bxg.CImage('background', {baseLayer:true, zIndex:0, pattern:true})).move(0, 0);
+	bxg.g.control1.add(new bxg.CImage('crack', {baseLayer:true, zIndex:1})).move(50, 50);
 	
 	for(var tile = 0; tile < bxg.c.countBush; tile ++){
-		bxg.g.control1.add(new bxg.CImageObject('bush', {baseLayer:true, zIndex:2})).move(bxg.g.control1.scrollSize.w*Math.random(), bxg.g.control1.scrollSize.h*Math.random());
+		bxg.g.control1.add(new bxg.CImage('bush', {baseLayer:true, zIndex:2})).move(bxg.g.control1.scrollSize.w*Math.random(), bxg.g.control1.scrollSize.h*Math.random());
 	}
 	
 	// Add input device
