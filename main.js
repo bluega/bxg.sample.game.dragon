@@ -4,7 +4,7 @@
 	Objectives:
 		Using CObject and CImage
 		Controlling CScrollControl, CBufferedScrollControl, C1WayBufferedScrollControl, C2WayBufferedScrollControl
-		Using CTouchArrowKeyDevice
+		Using CAccelerometerDevice
 		Using CMiniMap
 */
 "Copyright ⓒ 2009-2012 BLUEGA Inc.";
@@ -393,15 +393,14 @@ function onReady(/*Number*/loaded, /*Number*/failed)
 	}
 	
 	// Add input device
-	//   CTouchArrowKeyDevice for touch device
+	//   CAccelerometerDevice for touch device
 	//   CKeyDevice for PC
 	if (bx.HCL.DV.hasTouchEvent()){
-		bxg.game.addInputDevice(new bxg.CTouchArrowKeyDevice(
-			{
-				keyLeft:{offset:{x:-20}, type:'polling'}
-				,keyRight:{offset:{x:20}, type:'polling'}
-				,keyUp:{offset:{y:-20}, type:'polling'}
-				,keyDown:{offset:{y:20}, type:'polling'}
+		bxg.game.addInputDevice(new bxg.CAccelerometerDevice({
+				keyLeft:{x:{max:-1, min:-10}, type:'event'},
+				keyRight:{x:{max:10, min:1}, type:'event'},
+				keyUp:{y:{max:-1, min:-10}, type:'event'},
+				keyDown:{y:{max:10, min:1}, type:'event'}
 			}
 			,{multi:true}
 		));
